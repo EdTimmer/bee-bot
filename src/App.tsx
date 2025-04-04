@@ -15,7 +15,7 @@ import {
 } from './App.styles'
 import PetriDishGroup from './components/PetriDishGroup';
 import ShelfGroup from './components/ShelfGroup';
-import DeloitteDigitalLogoGroup from './components/DeloitteDigitalLogoGroup';
+import OrbitalIndustriesLogoGroup from './components/OrbitalIndustriesLogoGroup';
 import ThreeDWebGroup from './components/ThreeDWebGroup';
 
 function App() {
@@ -48,7 +48,7 @@ function App() {
             <directionalLight position={[2, 0, -10]} />
             <directionalLight position={[-2, 0, -10]} />
             {!isMobile && <OrbitControls enableDamping enableZoom={false} />}
-            <DeloitteDigitalLogoGroup />
+            <OrbitalIndustriesLogoGroup />
             <Environment preset="forest" />
           </Canvas>
         </DeloitteDigitalLogoContainer>    

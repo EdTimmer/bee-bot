@@ -1,9 +1,10 @@
 interface Props {
   position: [number, number, number];
   size: number;
+  color: string;
 }
 
-const GreenDotGlass = ({ position, size }: Props) => {
+const GreenDotGlass = ({ position, size, color }: Props) => {
   return (
     <mesh position={position}>
       <sphereGeometry args={[size, 32, 32]} />
@@ -20,16 +21,16 @@ const GreenDotGlass = ({ position, size }: Props) => {
         // attenuationColor="#ffffff"  // The color of the glass when light passes through
         attenuationDistance={2.5}  // Distance at which the glass becomes less transparent
         envMapIntensity={0.1}  // Control the strength of the reflections
-        color='#85BB24'
+        color={color}
         // envMap={envMap}
       />
-      <pointLight
+      {/* <pointLight
         position={[0, 0, 0]}  // Inside the sphere
         intensity={10}
         distance={5}
         decay={2}
         color="#ffcc99"  // Warm light color to simulate a lamp
-      />
+      /> */}
       {/* <Environment preset='sunset' /> */}
       {/* <Environment map={texture} /> */}
     </mesh>

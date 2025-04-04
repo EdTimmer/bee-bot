@@ -7,14 +7,15 @@ interface Props {
   position: [number, number, number];
   rotation: THREE.Euler;
   text: string;
+  color: string;
 }
 
-const LogoTextLight = ({ position, rotation, text }: Props) => {
+const LogoTextBold = ({ position, rotation, text, color }: Props) => {
   const [font, setFont] = useState<Font | null>(null);
 
   useEffect(() => {
     const loader = new FontLoader();
-    loader.load('/fonts/open_sans_light_regular.typeface.json', (loadedFont) => {
+    loader.load('/fonts/comfortaa/comfortaa_bold.json', (loadedFont) => {
       setFont(loadedFont);
     });
   }, []);
@@ -25,7 +26,7 @@ const LogoTextLight = ({ position, rotation, text }: Props) => {
   
       const textOptions = {
         font,
-        size: 1.5,
+        size: 1.6,
         depth: 0.4,
         curveSegments: 12,
         bevelEnabled: false,
@@ -60,13 +61,13 @@ const LogoTextLight = ({ position, rotation, text }: Props) => {
         thickness={0.00001}  // Controls the refraction and look of thickness
         // attenuationColor="#ffffff"  // The color of the glass when light passes through
         attenuationDistance={2.5}  // Distance at which the glass becomes less transparent
-        envMapIntensity={0.5}  // Control the strength of the reflections
+        envMapIntensity={0.1}  // Control the strength of the reflections
         // color="#999999"  // Use a slightly grey color instead of pure white
         // color='black'
-        color='#8a00f3' // '#ff0000'
+        color={color} // '#7400cc' // '#8a00f3'
       />
     </mesh>
   );
 };
 
-export default LogoTextLight;
+export default LogoTextBold;
