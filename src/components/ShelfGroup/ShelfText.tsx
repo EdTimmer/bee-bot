@@ -18,7 +18,7 @@ const ShelfText
 
   useEffect(() => {
     const loader = new FontLoader();
-    loader.load('/fonts/mediator_narrow_web_extra_bold_regular.typeface.json', (loadedFont) => {
+    loader.load('/fonts/comfortaa/comfortaa_bold.json', (loadedFont) => {
       setFont(loadedFont);
     });
   }, []);
@@ -54,12 +54,18 @@ const ShelfText
     <mesh geometry={textGeometry} rotation={rotation} position={position}>
       <meshPhysicalMaterial
         color={color}
-        metalness={1}
-        roughness={0.2}
-        reflectivity={1}
-        // envMap={envMap}   // Environment map for reflections
-        clearcoat={1}     // Adds a clear coat layer
-        clearcoatRoughness={0.1}  // Polished surface
+        clearcoat={1}  // Shiny surface effect
+        transmission={1}  // Fully transparent
+        opacity={0.5}  // Fully opaque but will be transparent due to transmission
+        // transparent={true}  // Enable transparency
+        roughness={0}  // Smooth like glass
+        reflectivity={0.5}  // Adjust reflection intensity
+        metalness={0}  // Glass is non-metallic
+        ior={1.45}  // 1.45 is typical for glass (Index of Refraction)
+        thickness={0.1}  // Controls the refraction and look of thickness
+        // attenuationColor="#ffffff"  // The color of the glass when light passes through
+        attenuationDistance={0.5}  // Distance at which the glass becomes less transparent
+        envMapIntensity={1.0}  // Control the strength of the reflections
       />
     </mesh>
   );

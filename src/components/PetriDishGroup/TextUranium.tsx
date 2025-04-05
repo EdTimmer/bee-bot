@@ -54,7 +54,7 @@ const TextUranium = ({ position, rotation, text, size, depth }: Props) => {
 
   useEffect(() => {
     const loader = new FontLoader();
-    loader.load('/fonts/mediator_narrow_web_extra_bold_regular.typeface.json', (loadedFont) => {
+    loader.load('/fonts/comfortaa/comfortaa_bold.json', (loadedFont) => {
       setFont(loadedFont);
     });
   }, []);

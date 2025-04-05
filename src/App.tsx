@@ -82,30 +82,6 @@ function App() {
         </ShelfContainer>
       </SecondRow>
 
-      <div>
-        <Row>
-          <ThreeDWebGroupContainer>
-            <Canvas gl={{ antialias: true }}>
-              <PerspectiveCamera makeDefault fov={20} position={[0, 0, 20]} />
-              <ambientLight intensity={0.5} />
-              {/* <directionalLight position={[0, 10, 10]} />
-              <directionalLight position={[10, -10, 10]} />
-              <directionalLight position={[-10, -10, 10]} /> */}
-              {!isMobile && <OrbitControls enableDamping enableZoom={false} />}
-              <ThreeDWebGroup />
-              <Environment preset="lobby" />
-            </Canvas>
-          </ThreeDWebGroupContainer>
-        </Row>
-
-        <Row>
-          <HeaderContainer>
-            <Header>This is a demo of use of 3D graphics for logos on a website.</Header>
-            <Header>Click and drag any logo to rotate it. This feature is optional and is currently disabled for small screens.</Header>
-            <Header>Created by Edward Timmer, Deloitte Digital</Header>
-          </HeaderContainer>
-        </Row>
-      </div>
     </AppContainer>
   )
 }

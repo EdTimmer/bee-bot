@@ -12,10 +12,10 @@ import SphereLarge from './SphereLarge';
 function OrbitalIndustriesLogoGroup() {
   const logoGroupRef = useRef<Group>(null);
 
-  useFrame(({ clock }) => {
+  useFrame(({ clock }, delta) => {
     if (logoGroupRef.current) {
       const time = clock.getElapsedTime();
-      logoGroupRef.current.rotation.y = Math.sin(time * 0.5) * 0.2;
+      logoGroupRef.current.rotation.x = Math.sin((delta + time)  * 0.3) * 0.1;
     }
   });
 
