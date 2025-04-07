@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 import colors from './styles/colors';
 import lakeImage from '/images/lake-purple.jpg';
+import nasaImage from '/images/nasa_1.jpg';
+import landscapeImage from '/images/landscape_5.jpg';
 
 export const AppContainer = styled.div`
   position: relative;
   z-index: 1;
   /* background: ${colors.eerieBlack}; */
-  background-image: url(${lakeImage});
+  background-image: url(${landscapeImage});
   font-family: 'Roboto Mono', monospace;
-  padding: 0 3rem 5rem 3rem;
+  /* padding: 0 3rem 5rem 3rem; */
   /* width: 100vw; */
   background-size: cover;
   background-position: center;
@@ -24,7 +26,7 @@ export const AppContainer = styled.div`
 export const Row = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin: 0;
   padding: 0;
@@ -37,7 +39,7 @@ export const SecondRow = styled.div`
   align-items: center;
   margin: 0;
   padding: 0;
-  margin-top: -10rem;
+  /* margin-top: -10rem; */
   flex-wrap: wrap;
 
   @media (min-width: 1024px) {
@@ -77,9 +79,9 @@ export const PetriDishContainer = styled.div`
 export const ShelfContainer = styled.div`
   /* border: 1px dashed ${colors.seasalt}; */
   /* border-radius: 30rem; */
-  width: 35rem;
-  height: 40rem;
-  cursor: pointer;
+  width: 100vw;
+  height: 100vh;
+  /* cursor: pointer; */
   /* margin-top: 20rem; */
 `;
 
@@ -93,12 +95,16 @@ export const ThreeDWebGroupContainer = styled.div`
   /* margin-top: -20rem; */
 `;
 
-export const DeloitteDigitalLogoContainer = styled.div`
+export const LogoContainer = styled.div`
   /* border: 1px dashed ${colors.seasalt}; */
   /* border-radius: 30rem; */
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 80rem;
   height: 40rem;
-  cursor: pointer;
+  margin-left: -5rem;
+
 
   @media (max-width: 450px) {
     width: 45rem;

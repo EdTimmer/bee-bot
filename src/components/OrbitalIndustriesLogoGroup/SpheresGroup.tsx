@@ -4,6 +4,7 @@ import { Group } from "three";
 import * as THREE from 'three';
 import GreenDotGlass from "./GreenDotGlass";
 import SilverDot from "./SilverDot";
+import CylinderMesh from "./CylinderMesh";
 
 interface Props {
   position: [number, number, number];
@@ -11,9 +12,10 @@ interface Props {
   speed: number;
   rotation: THREE.Euler;
   sphereSize: number; // Optional prop for sphere size
+  color: string;
 }
 
-const GreenSpheresGroup = ({ position, radius, speed, rotation, sphereSize }: Props) => {
+const SpheresGroup = ({ position, radius, speed, rotation, sphereSize, color }: Props) => {
     const spheresGroupRef = useRef<Group>(null);
 
     useFrame((_, delta) => {
@@ -32,15 +34,21 @@ const GreenSpheresGroup = ({ position, radius, speed, rotation, sphereSize }: Pr
         <SilverDot size={sphereSize} position={[0, 0, radius * (-1)]} color={'#fff'} />
         <SilverDot size={sphereSize} position={[0, 0, radius]} color={'#fff'} /> */}
 
-        <GreenDotGlass size={sphereSize} position={[radius * (-1), 0, 0]} color={'#00ed8a'} />
-        <GreenDotGlass size={sphereSize} position={[radius, 0, 0]} color={'#00ed8a'} />
+        {/* <GreenDotGlass size={sphereSize} position={[radius * (-1), 0, 0]} color={'#00ed8a'} /> */}
+        {/* <GreenDotGlass size={sphereSize} position={[radius, 0, 0]} color={'#00ed8a'} />
 
         <GreenDotGlass size={sphereSize} position={[0, 0, radius * (-1)]} color={'#00ed8a'} />
-        <GreenDotGlass size={sphereSize} position={[0, 0, radius]} color={'#00ed8a'} />
+        <GreenDotGlass size={sphereSize} position={[0, 0, radius]} color={'#00ed8a'} /> */}
+
+        <CylinderMesh size={sphereSize} position={[radius * (-1), 0, 0]} color={color} />
+        <CylinderMesh size={sphereSize} position={[radius, 0, 0]} color={color} />
+
+        <CylinderMesh size={sphereSize} position={[0, 0, radius * (-1)]} color={color} />
+        <CylinderMesh size={sphereSize} position={[0, 0, radius]} color={color} />
 
         {/* <GreenDotGlass size={sphereSize} position={[radius, 0, 0]} color={'#00ed8a'} /> */}
       </group>
     )
   }
 
-  export default GreenSpheresGroup;
+  export default SpheresGroup;

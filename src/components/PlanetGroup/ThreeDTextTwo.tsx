@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import * as THREE from 'three';
+import { Environment } from '@react-three/drei';
 import { Font, FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
 
@@ -7,15 +8,14 @@ interface Props {
   position: [number, number, number];
   rotation: THREE.Euler;
   text: string;
-  color: string;
 }
 
-const LogoTextLight = ({ position, rotation, text, color }: Props) => {
+const ThreeDTextTwo = ({ position, rotation, text }: Props) => {
   const [font, setFont] = useState<Font | null>(null);
 
   useEffect(() => {
     const loader = new FontLoader();
-    loader.load('/fonts/comfortaa/comfortaa_light_regular.json', (loadedFont) => {
+    loader.load('/fonts/helvetiker_regular.typeface.json', (loadedFont) => {
       setFont(loadedFont);
     });
   }, []);
@@ -26,8 +26,8 @@ const LogoTextLight = ({ position, rotation, text, color }: Props) => {
   
       const textOptions = {
         font,
-        size: 1.2,
-        depth: 0.4,
+        size: 1.6,
+        depth: 0.3,
         curveSegments: 12,
         bevelEnabled: false,
         bevelThickness: 0.1,
@@ -49,30 +49,10 @@ const LogoTextLight = ({ position, rotation, text, color }: Props) => {
 
   return (
     <mesh geometry={textGeometry} rotation={rotation} position={position}>
-      {/* <meshPhysicalMaterial
-        clearcoat={1}  // Shiny surface effect
-        transmission={1}  // Fully transparent
-        opacity={1}  // Fully opaque but will be transparent due to transmission
-        // transparent={true}  // Enable transparency
-        roughness={0}  // Smooth like glass
-        reflectivity={1}  // Adjust reflection intensity
-        metalness={0}  // Glass is non-metallic
-        ior={1.45}  // Typical for glass (Index of Refraction)
-        thickness={1}  // Controls the refraction and look of thickness
-        // attenuationColor="#ffffff"  // The color of the glass when light passes through
-        attenuationDistance={2.5}  // Distance at which the glass becomes less transparent
-        envMapIntensity={0.5}  // Control the strength of the reflections
-        // color="#999999"  // Use a slightly grey color instead of pure white
-        // color='black'
-        color={color} // '#ff0000'
-      /> */}
-      <meshStandardMaterial
-        color={color}
-        roughness={0}
-        metalness={1}
-      />
+      <meshStandardMaterial color="black" metalness={1.0} roughness={0.0} />
+      <Environment preset="sunset" />
     </mesh>
   );
 };
 
-export default LogoTextLight;
+export default ThreeDTextTwo;

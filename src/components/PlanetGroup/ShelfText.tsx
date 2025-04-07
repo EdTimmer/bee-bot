@@ -7,15 +7,18 @@ interface Props {
   position: [number, number, number];
   rotation: THREE.Euler;
   text: string;
+  size: number;
+  depth: number;
   color: string;
 }
 
-const LogoTextLight = ({ position, rotation, text, color }: Props) => {
+const ShelfText
+ = ({ position, rotation, text, size, depth, color }: Props) => {
   const [font, setFont] = useState<Font | null>(null);
 
   useEffect(() => {
     const loader = new FontLoader();
-    loader.load('/fonts/comfortaa/comfortaa_light_regular.json', (loadedFont) => {
+    loader.load('/fonts/comfortaa/comfortaa_bold.json', (loadedFont) => {
       setFont(loadedFont);
     });
   }, []);
@@ -26,12 +29,12 @@ const LogoTextLight = ({ position, rotation, text, color }: Props) => {
   
       const textOptions = {
         font,
-        size: 1.2,
-        depth: 0.4,
+        size,
+        depth,
         curveSegments: 12,
         bevelEnabled: false,
-        bevelThickness: 0.1,
-        bevelSize: 0.1,
+        bevelThickness: 0.02,
+        bevelSize: 0.02,
         bevelOffset: 0,
         bevelSegments: 5,
       };
@@ -49,30 +52,23 @@ const LogoTextLight = ({ position, rotation, text, color }: Props) => {
 
   return (
     <mesh geometry={textGeometry} rotation={rotation} position={position}>
-      {/* <meshPhysicalMaterial
+      <meshPhysicalMaterial
+        color={color}
         clearcoat={1}  // Shiny surface effect
         transmission={1}  // Fully transparent
-        opacity={1}  // Fully opaque but will be transparent due to transmission
+        opacity={0.5}  // Fully opaque but will be transparent due to transmission
         // transparent={true}  // Enable transparency
         roughness={0}  // Smooth like glass
-        reflectivity={1}  // Adjust reflection intensity
+        reflectivity={0.5}  // Adjust reflection intensity
         metalness={0}  // Glass is non-metallic
-        ior={1.45}  // Typical for glass (Index of Refraction)
-        thickness={1}  // Controls the refraction and look of thickness
+        ior={1.45}  // 1.45 is typical for glass (Index of Refraction)
+        thickness={0.1}  // Controls the refraction and look of thickness
         // attenuationColor="#ffffff"  // The color of the glass when light passes through
-        attenuationDistance={2.5}  // Distance at which the glass becomes less transparent
-        envMapIntensity={0.5}  // Control the strength of the reflections
-        // color="#999999"  // Use a slightly grey color instead of pure white
-        // color='black'
-        color={color} // '#ff0000'
-      /> */}
-      <meshStandardMaterial
-        color={color}
-        roughness={0}
-        metalness={1}
+        attenuationDistance={0.5}  // Distance at which the glass becomes less transparent
+        envMapIntensity={1.0}  // Control the strength of the reflections
       />
     </mesh>
   );
 };
 
-export default LogoTextLight;
+export default ShelfText;

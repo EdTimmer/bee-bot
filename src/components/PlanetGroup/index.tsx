@@ -9,7 +9,7 @@ import GreenDotGlassTwo from './GreenDotGlassTwo';
 import * as THREE from 'three'
 import Satellite from '../Satellite';
 
-function ShelfGroup() {
+function PlanetGroup() {
   const shelfGroupRef = useRef<Group>(null);
 
   // Rotate the group on each frame
@@ -24,14 +24,16 @@ function ShelfGroup() {
   return (
     <group position={[0, 0, 0]} scale={[1, 1, 1]} ref={shelfGroupRef}>
       <perspectiveCamera fov={20} position={[0, 0, 10]} />        
-      {/* <ShelfText text={'Orbital'} position={[-0.2, 2.5, 0]} rotation={new THREE.Euler(0, 0, 0)} size={0.9} depth={0.3} color={'#000'} /> */}
-      {/* <GreenDotGlassTwo color={'#ffa1ef'} size={0.3} position={[-2, 2.5, 0]} />  */}
-      <SphereAnimated />
-      <GreenGlassCover size ={1.7} position={[0, 0, 0]} color={'#00ed8a'} /> // '#00ed8a'
-      {/* <ShelfContainer position={[0, 0, 0]} /> */}
-      <Satellite position={[0, 0, -0.6]} rotation={new THREE.Euler(Math.PI, 0, Math.PI)} scale={0.25} />
+      {/* <SphereAnimated size={2.3}/>
+      <GreenGlassCover size ={2.5} position={[0, 0, 0]} color={'#ffa1ef'} /> */}
+      <Satellite position={[0, 0, 0]} rotation={new THREE.Euler(-3.6, -0.6, -0.8)} scale={0.3} offset={[-10, 0, 0]} type={'civilian1'} />
+      <Satellite position={[10, 0, 0]} rotation={new THREE.Euler(Math.PI / 2, 0, 0)} scale={0.1} offset={[-5, 0, 0]} type={'military1'} />
+      <Satellite position={[0, -3, 0]} rotation={new THREE.Euler(-3.6, -0.6, -0.8)} scale={0.3} offset={[-10, -5, 0]}  type={'civilian1'} />
+      <Satellite position={[-2, 0, 3]} rotation={new THREE.Euler(Math.PI / 2, 0, 0)} scale={0.3} offset={[-12, -2, 1]}  type={'military1'} />
+      <Satellite position={[-2, 0, 3]} rotation={new THREE.Euler(Math.PI / 2, 0, 0)} scale={0.3} offset={[4, 5, 1]} type={'military1'} />
+      
     </group>    
   );
 }
 
-export default ShelfGroup;
+export default PlanetGroup;

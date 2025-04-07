@@ -54,7 +54,9 @@ void main() {
   strength = clamp(strength, 0.0, 1.0);
 
   vec3 firstColor = vec3(0.0);
-  vec3 secondColor = vec3(0, 0.929, 0.541); // 0.086, 0.537, 0 green: 0.086, 0.537, 0
+  // light green 0, 0.929, 0.541
+  // Purplish light
+  vec3 secondColor = vec3(1, 0.631, 0.937); // 0.086, 0.537, 0 green: 0.086, 0.537, 0
   vec3 mixedColor = mix(firstColor, secondColor, strength);
   
 
