@@ -104,6 +104,7 @@ export const LogoContainer = styled.div`
   width: 80rem;
   height: 40rem;
   margin-left: -5rem;
+  z-index: 2;
 
 
   @media (max-width: 450px) {

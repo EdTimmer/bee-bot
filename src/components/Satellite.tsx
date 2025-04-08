@@ -3,7 +3,7 @@ import { useFrame } from "@react-three/fiber";
 import { forwardRef, useEffect, useLayoutEffect, useRef } from "react";
 import * as THREE from 'three'
 
-type SatelliteTypes = 'civilian1' | 'military1';
+type SatelliteTypes = 'civilian1' | 'military1' | 'military2';
 
 interface Props {
   children?: React.ReactNode;
@@ -24,6 +24,8 @@ const Satellite = forwardRef<any, Props>(({ children, rotationSpeed = 1.5, scale
         return '../../models/satellite.glb';
       case 'military1':
         return '../../models/satellite_box_1_joined_4.glb';
+      case 'military2':
+          return '../../models/satellite_box_3_joined.glb';
       default:
         return '../../models/satellite.glb';
     }
@@ -68,18 +70,18 @@ const Satellite = forwardRef<any, Props>(({ children, rotationSpeed = 1.5, scale
 
   const timeRef = useRef(0);
   
-  useFrame((_, delta) => {
-    const radius = 10;
-    const speed = 0.1;
+  // useFrame((_, delta) => {
+  //   const radius = 10;
+  //   const speed = 0.1;
 
-    timeRef.current += delta * speed;
+  //   timeRef.current += delta * speed;
         
-    if (meshRef.current) {
-      meshRef.current.position.x = Math.sin(timeRef.current) * radius + offset[0];     
-      meshRef.current.position.y = Math.sin(timeRef.current) * radius + offset[1];
-      meshRef.current.position.z = -Math.cos(timeRef.current) * radius + offset[2];
-    }
-  });
+  //   if (meshRef.current) {
+  //     meshRef.current.position.x = Math.sin(timeRef.current) * radius + offset[0];     
+  //     meshRef.current.position.y = Math.sin(timeRef.current) * radius + offset[1];
+  //     meshRef.current.position.z = -Math.cos(timeRef.current) * radius + offset[2];
+  //   }
+  // });
 
   const satelliteNode = Object.values(nodes).find(
     (node) => (node as THREE.Mesh).isMesh

@@ -61,6 +61,8 @@ function App() {
             <directionalLight position={[10, 4, 10]} color={'white'} intensity={0.5} />
             <directionalLight position={[11, 4, 10]} color={'white'} intensity={0.5} />
 
+            <fog attach="fog" args={['#ffffff', 0.1, 150]} />
+
             {/* <directionalLight position={[0, 0, 10]} /> */}
             {/* <directionalLight position={[1, 0, 10]} /> */}
             {/* <directionalLight position={[2, 0, 10]} /> */}
@@ -128,7 +130,7 @@ function App() {
             <directionalLight position={[-10, -10, 0]} />
             {!isMobile && <OrbitControls enableDamping enableZoom={false} />}
             <PlanetGroup />
-            <Environment preset="forest" />
+            <Environment preset="warehouse" />
           </Canvas>
         </ShelfContainer>
       </SecondRow>
