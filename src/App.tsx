@@ -11,7 +11,8 @@ import {
   Row,
   SecondRow,
   Header,
-  HeaderContainer
+  HeaderContainer,
+  MilSatContainer
 } from './App.styles'
 import PetriDishGroup from './components/PetriDishGroup';
 import ShelfGroup from './components/ShelfGroup';
@@ -19,6 +20,7 @@ import OrbitalIndustriesLogoGroup from './components/OrbitalIndustriesLogoGroup'
 import ThreeDWebGroup from './components/ThreeDWebGroup';
 import PlanetGroup from './components/PlanetGroup';
 import AnimatedLight from './components/AnimatedLight';
+import MilSatGroup from './components/MilSatGroup';
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -61,7 +63,7 @@ function App() {
             <directionalLight position={[10, 4, 10]} color={'white'} intensity={0.5} />
             <directionalLight position={[11, 4, 10]} color={'white'} intensity={0.5} />
 
-            <fog attach="fog" args={['#ffffff', 0.1, 150]} />
+            
 
             {/* <directionalLight position={[0, 0, 10]} /> */}
             {/* <directionalLight position={[1, 0, 10]} /> */}
@@ -131,8 +133,25 @@ function App() {
             {!isMobile && <OrbitControls enableDamping enableZoom={false} />}
             <PlanetGroup />
             <Environment preset="warehouse" />
+            <fog attach="fog" args={['#ffffff', 10, 125]} />
           </Canvas>
         </ShelfContainer>
+
+        <MilSatContainer>
+          <Canvas gl={{ antialias: true }}>
+            <PerspectiveCamera makeDefault fov={20} position={[0, 0, 20]} />
+            {/* <ambientLight intensity={0.5} /> */}
+            <directionalLight position={[0, 0, -2]} intensity={1} />
+            <directionalLight position={[0, 5, -2]} intensity={1} />
+            <directionalLight position={[0, -5, -2]} intensity={1} />
+
+            {!isMobile && <OrbitControls enableDamping enableZoom={false} />}
+            <MilSatGroup />
+            <Environment preset="warehouse" />
+            {/* <fog attach="fog" args={['#ffffff', 10, 125]} /> */}
+          </Canvas>
+        </MilSatContainer>
+
       </SecondRow>
 
     </AppContainer>

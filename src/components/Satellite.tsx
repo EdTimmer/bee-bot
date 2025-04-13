@@ -21,7 +21,7 @@ const Satellite = forwardRef<any, Props>(({ children, rotationSpeed = 1.5, scale
   const getSatelliteType = (type: SatelliteTypes) => {
     switch (type) {
       case 'civilian1':
-        return '../../models/satellite.glb';
+        return '../../models/satellite_civ_1.glb';
       case 'military1':
         return '../../models/satellite_box_1_joined_4.glb';
       case 'military2':

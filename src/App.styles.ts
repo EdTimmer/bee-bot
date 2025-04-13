@@ -85,6 +85,16 @@ export const ShelfContainer = styled.div`
   /* margin-top: 20rem; */
 `;
 
+export const MilSatContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* margin-left: -5rem; */
+  z-index: 3;
+`;
+
 export const ThreeDWebGroupContainer = styled.div`
   /* border: 1px dashed ${colors.seasalt}; */
   /* border-radius: 30rem; */
@@ -104,7 +114,7 @@ export const LogoContainer = styled.div`
   width: 80rem;
   height: 40rem;
   margin-left: -5rem;
-  z-index: 2;
+  z-index: 1;
 
 
   @media (max-width: 450px) {
