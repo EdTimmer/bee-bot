@@ -1,11 +1,6 @@
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Group } from 'three';
-import ShelfContainer from './ShelfContainer';
-import SphereAnimated from './SphereAnimated';
-import GreenGlassCover from './GreenGlassCover';
-import ShelfText from './ShelfText';
-import GreenDotGlassTwo from './GreenDotGlassTwo';
 import * as THREE from 'three'
 import Satellite from '../Satellite';
 
@@ -60,7 +55,7 @@ function MilSatGroup() {
       {/* <SphereAnimated size={2.3}/>
       <GreenGlassCover size ={2.5} position={[0, 0, 0]} color={'#ffa1ef'} /> */}
       {/* <Satellite position={[0, 0, 0]} rotation={new THREE.Euler(-3.6, -0.6, -0.8)} scale={0.3} offset={[-10, 0, 0]} type={'civilian1'} /> */}
-      <Satellite ref={milSatRef} position={[0, -0.2, 0]} rotation={new THREE.Euler(Math.PI / 2, 0, 0)} scale={0.08} type={'military2'} />
+      <Satellite ref={milSatRef} position={[0, 0.3, 0]} rotation={new THREE.Euler(Math.PI / 2, 0, Math.PI / 2)} scale={0.08} type={'military2'} />
       
       
     </group>    

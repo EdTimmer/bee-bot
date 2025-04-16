@@ -18,9 +18,10 @@ import PetriDishGroup from './components/PetriDishGroup';
 import ShelfGroup from './components/ShelfGroup';
 import OrbitalIndustriesLogoGroup from './components/OrbitalIndustriesLogoGroup';
 import ThreeDWebGroup from './components/ThreeDWebGroup';
-import PlanetGroup from './components/PlanetGroup';
+import CivSatGroup from './components/CivSatGroup';
 import AnimatedLight from './components/AnimatedLight';
 import MilSatGroup from './components/MilSatGroup';
+import UfoGroup from './components/UfoGroup';
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -130,8 +131,11 @@ function App() {
             <directionalLight position={[0, 10, 10]} />
             <directionalLight position={[10, -10, 0]} />
             <directionalLight position={[-10, -10, 0]} />
+
+            <directionalLight position={[0, -5, -5]} intensity={1} color={'#f9d87b'} />
             {!isMobile && <OrbitControls enableDamping enableZoom={false} />}
-            <PlanetGroup />
+            <CivSatGroup />
+            <UfoGroup />
             <Environment preset="warehouse" />
             <fog attach="fog" args={['#ffffff', 10, 125]} />
           </Canvas>
@@ -144,7 +148,8 @@ function App() {
             <directionalLight position={[0, 0, -2]} intensity={1} />
             <directionalLight position={[0, 5, -2]} intensity={1} />
             <directionalLight position={[0, -5, -2]} intensity={1} />
-
+            
+            <directionalLight position={[0, -5, -5]} intensity={1} color={'#f9d87b'} />
             {!isMobile && <OrbitControls enableDamping enableZoom={false} />}
             <MilSatGroup />
             <Environment preset="warehouse" />
