@@ -31,26 +31,26 @@ function MilSatGroup() {
   useFrame((_, delta) => {
     if (milSatRef.current) {
       // rotate the group around the Y axis
-      milSatRef.current.rotation.z -= delta * 0.2;
+      milSatRef.current.rotation.z -= delta * 0.35;
     }
   });
 
 
   useFrame((_, delta) => {
-    const radius = 10;
-    const speed = 0.05;
+    const radius = 6;
+    const speed = 0.125;
 
     timeRef.current += delta * speed;
         
     if (milSatRef.current) {
       milSatRef.current.position.x = Math.sin(timeRef.current) * radius;     
       // milSatRef.current.position.y = Math.sin(timeRef.current) * radius;
-      milSatRef.current.position.z = Math.cos(timeRef.current) * radius + 29;
+      milSatRef.current.position.z = Math.cos(timeRef.current) * radius + 0;  // + 29
     }
   });
 
   return (
-    <group position={[0, 0, -5]} scale={[1, 1, 1]} >
+    <group position={[0, 0, 20]} scale={[1, 1, 1]} >
       {/* <perspectiveCamera fov={20} position={[0, 0, 10]} />         */}
       {/* <SphereAnimated size={2.3}/>
       <GreenGlassCover size ={2.5} position={[0, 0, 0]} color={'#ffa1ef'} /> */}

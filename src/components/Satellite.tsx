@@ -3,7 +3,7 @@ import { useFrame } from "@react-three/fiber";
 import { forwardRef, useEffect, useLayoutEffect, useRef } from "react";
 import * as THREE from 'three'
 
-type SatelliteTypes = 'civilian1' | 'military1' | 'military2' | 'ufo';
+type SatelliteTypes = 'civilian1' | 'civilian2' | 'military1' | 'military2' | 'ufo';
 
 interface Props {
   children?: React.ReactNode;
@@ -22,6 +22,8 @@ const Satellite = forwardRef<any, Props>(({ children, rotationSpeed = 1.5, scale
     switch (type) {
       case 'civilian1':
         return '../../models/satellite_civ_1.glb';
+      case 'civilian2':
+        return '../../models/civ_sat_2.glb';
       case 'military1':
         // return '../../models/satellite_box_1_joined_4.glb';
         return '../../models/milsat1_joined.glb';

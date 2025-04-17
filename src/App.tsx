@@ -103,6 +103,7 @@ function App() {
 
             {/* <directionalLight position={[3, 0, 1]} /> */}
             {!isMobile && <OrbitControls enableDamping enableZoom={false} />}
+            <OrbitControls enableDamping enableZoom={true} />
             <OrbitalIndustriesLogoGroup />
             <Environment preset="warehouse" />
             {/* <Environment files='/images/new_1.jpg' /> */}

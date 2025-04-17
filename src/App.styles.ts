@@ -109,11 +109,13 @@ export const LogoContainer = styled.div`
   /* border: 1px dashed ${colors.seasalt}; */
   /* border-radius: 30rem; */
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50;
+  left: 50;
   width: 80rem;
   height: 40rem;
-  margin-left: -5rem;
+  /* margin-left: -5rem; */
+  margin-top: 5rem;
+  margin-left: 2rem;
   z-index: 1;
 
 
