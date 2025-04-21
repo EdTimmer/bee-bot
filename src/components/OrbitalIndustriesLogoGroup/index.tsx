@@ -28,7 +28,7 @@ function OrbitalIndustriesLogoGroup() {
       <LogoTextBold text={'Orbital'} position={[0, 1.1, 0]} rotation={new THREE.Euler(0, 0, 0)} color={'#6a6a6a'} />
       <LogoTextLight text={'express'} position={[0.1, -0.7, 0]} rotation={new THREE.Euler(0, 0, 0)} color={'#6a6a6a'} />
       
-      <SpheresGroup position={[-3.25, 1.1, 0]} radius={0.34} speed={0.4} rotation={new THREE.Euler(Math.PI / 2, 0, 0)} sphereSize={0.17} color={'#6a6a6a'} />
+      <SpheresGroup position={[-3.25, 1.1, 0]} radius={0.33} speed={0.4} rotation={new THREE.Euler(Math.PI / 2, 0, 0)} sphereSize={0.22} color={'#6a6a6a'} />
     </group>    
   );
 }

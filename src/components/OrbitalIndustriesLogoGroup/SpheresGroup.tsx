@@ -28,25 +28,20 @@ const SpheresGroup = ({ position, radius, speed, rotation, sphereSize, color }: 
 
     return (
       <group position={position} scale={[1, 1, 1]} ref={spheresGroupRef} rotation={rotation}>
-        {/* <SilverDot size={sphereSize} position={[radius * (-1), 0, 0]} color={'#fff'} />
-        <SilverDot size={sphereSize} position={[radius, 0, 0]} color={'#fff'} />
-
-        <SilverDot size={sphereSize} position={[0, 0, radius * (-1)]} color={'#fff'} />
-        <SilverDot size={sphereSize} position={[0, 0, radius]} color={'#fff'} /> */}
-
-        {/* <GreenDotGlass size={sphereSize} position={[radius * (-1), 0, 0]} color={'#00ed8a'} /> */}
-        {/* <GreenDotGlass size={sphereSize} position={[radius, 0, 0]} color={'#00ed8a'} />
-
-        <GreenDotGlass size={sphereSize} position={[0, 0, radius * (-1)]} color={'#00ed8a'} />
-        <GreenDotGlass size={sphereSize} position={[0, 0, radius]} color={'#00ed8a'} /> */}
-
-        <CylinderMesh size={sphereSize} position={[radius * (-1), 0, 0]} color={color} />
+        {/* <CylinderMesh size={sphereSize} position={[radius * (-1), 0, 0]} color={color} />
         <CylinderMesh size={sphereSize} position={[radius, 0, 0]} color={color} />
 
         <CylinderMesh size={sphereSize} position={[0, 0, radius * (-1)]} color={color} />
-        <CylinderMesh size={sphereSize} position={[0, 0, radius]} color={color} />
+        <CylinderMesh size={sphereSize} position={[0, 0, radius]} color={color} /> */}
 
-        {/* <GreenDotGlass size={sphereSize} position={[radius, 0, 0]} color={'#00ed8a'} /> */}
+        {/* First vertex (0°) */}
+        <CylinderMesh size={sphereSize} position={[radius, 0, 0]} color={color} />
+        
+        {/* Second vertex (120°) */}
+        <CylinderMesh size={sphereSize} position={[-radius * 0.5, 0, radius * Math.sqrt(3) / 2]} color={color} />
+        
+        {/* Third vertex (240°) */}
+        <CylinderMesh size={sphereSize} position={[-radius * 0.5, 0, -radius * Math.sqrt(3) / 2]} color={color} />
       </group>
     )
   }

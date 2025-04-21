@@ -50,19 +50,19 @@ function CivSatGroup() {
   });
 
   return (
-    <group position={[3, -2, -5]} scale={[1, 1, 1]} >
+    <group position={[3, -2.5, -5]} scale={[1, 1, 1]} >
       <perspectiveCamera fov={20} position={[0, 0, 10]} />        
       
       {/* <Satellite ref={milSatRef} position={[0, -0.2, 0]} rotation={new THREE.Euler(Math.PI / 2, 0, 0)} scale={0.08} type={'military2'} /> */}
       
       <group position={[-0.5, 0, -5]} scale={[1, 1, 1]} ref={groupOneRef} rotation={[0.4, 0, 0.4]}>
         {/* <Satellite position={[-10, 0, 0]} rotation={new THREE.Euler(Math.PI / 2, 0, Math.PI)} scale={0.3} offset={[-10, -5, 0]}  type={'civilian1'} /> */}
-        <Satellite position={[10, 0, 0]} rotation={new THREE.Euler(0, 0, Math.PI)} scale={0.1} offset={[-10, -5, 0]}  type={'civilian1'} />
+        <Satellite position={[12, 0, 0]} rotation={new THREE.Euler(0, 0, Math.PI)} scale={0.07} offset={[-10, -5, 0]}  type={'civilian1'} />
       </group>
 
       <group position={[-0.5, 0, -5]} scale={[1, 1, 1]} ref={groupTwoRef} rotation={[0.4, 0, -0.4]}>
         {/* <Satellite position={[-10, 0, 0]} rotation={new THREE.Euler(0, Math.PI, Math.PI)} scale={0.1} offset={[-10, -5, 0]}  type={'civilian1'} /> */}
-        <Satellite position={[-10, 0, 0]} rotation={new THREE.Euler(Math.PI, Math.PI, -0.3)} scale={0.08} offset={[-10, -5, 0]}  type={'civilian2'} />
+        <Satellite position={[-12, 0, 0]} rotation={new THREE.Euler(Math.PI, Math.PI, -0.3)} scale={0.05} offset={[-10, -5, 0]}  type={'civilian2'} />
         {/* <Satellite position={[-10, 0, 0]} rotation={new THREE.Euler(Math.PI, Math.PI, Math.PI)} scale={0.06} offset={[-10, -5, 0]}  type={'ufo'} /> */}
 
 

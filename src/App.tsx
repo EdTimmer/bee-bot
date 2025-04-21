@@ -22,6 +22,7 @@ import CivSatGroup from './components/CivSatGroup';
 import AnimatedLight from './components/AnimatedLight';
 import MilSatGroup from './components/MilSatGroup';
 import UfoGroup from './components/UfoGroup';
+import RaiderGroup from './components/RaiderGroup';
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -137,6 +138,7 @@ function App() {
             {!isMobile && <OrbitControls enableDamping enableZoom={false} />}
             <CivSatGroup />
             <UfoGroup />
+            <RaiderGroup />
             <Environment preset="warehouse" />
             <fog attach="fog" args={['#ffffff', 10, 125]} />
           </Canvas>
