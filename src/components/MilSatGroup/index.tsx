@@ -20,7 +20,7 @@ function MilSatGroup() {
   useFrame((_, delta) => {
     if (groupTwoRef.current) {
       // rotate the group around the Y axis      
-      groupTwoRef.current.rotation.y -= delta * 0.1;
+      groupTwoRef.current.rotation.y -= delta * 0.06;
     }
     
   });
