@@ -20,10 +20,8 @@ const LogoTextLight = ({ position, rotation, text, color }: Props) => {
     });
   }, []);
 
-    // Use `useMemo` to memoize the geometry creation and avoid recreation on every render
     const textGeometry = useMemo(() => {
-      if (!font) return null;
-  
+      if (!font) return null;  
       const textOptions = {
         font,
         size: 1.2,
@@ -38,9 +36,8 @@ const LogoTextLight = ({ position, rotation, text, color }: Props) => {
   
       const geometry = new TextGeometry(text, textOptions);
     
-      // Compute the bounding box of the text and center it
       geometry.computeBoundingBox();
-      geometry.center();  // This will center the text at the origin (0, 0, 0)
+      geometry.center();
 
       return geometry;
     }, [font]);
@@ -49,23 +46,6 @@ const LogoTextLight = ({ position, rotation, text, color }: Props) => {
 
   return (
     <mesh geometry={textGeometry} rotation={rotation} position={position}>
-      {/* <meshPhysicalMaterial
-        clearcoat={1}  // Shiny surface effect
-        transmission={1}  // Fully transparent
-        opacity={1}  // Fully opaque but will be transparent due to transmission
-        // transparent={true}  // Enable transparency
-        roughness={0}  // Smooth like glass
-        reflectivity={1}  // Adjust reflection intensity
-        metalness={0}  // Glass is non-metallic
-        ior={1.45}  // Typical for glass (Index of Refraction)
-        thickness={1}  // Controls the refraction and look of thickness
-        // attenuationColor="#ffffff"  // The color of the glass when light passes through
-        attenuationDistance={2.5}  // Distance at which the glass becomes less transparent
-        envMapIntensity={0.5}  // Control the strength of the reflections
-        // color="#999999"  // Use a slightly grey color instead of pure white
-        // color='black'
-        color={color} // '#ff0000'
-      /> */}
       <meshStandardMaterial
         color={color}
         roughness={0}

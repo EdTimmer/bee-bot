@@ -1,17 +1,12 @@
 import styled from 'styled-components';
 import colors from './styles/colors';
-import lakeImage from '/images/lake-purple.jpg';
-import nasaImage from '/images/nasa_1.jpg';
 import landscapeImage from '/images/landscape_5.jpg';
 
 export const AppContainer = styled.div`
   position: relative;
   z-index: 1;
-  /* background: ${colors.eerieBlack}; */
   background-image: url(${landscapeImage});
   font-family: 'Roboto Mono', monospace;
-  /* padding: 0 3rem 5rem 3rem; */
-  /* width: 100vw; */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -32,7 +27,7 @@ export const Row = styled.div`
   padding: 0;
 `;
 
-export const SecondRow = styled.div`
+export const SceneContent = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -67,22 +62,14 @@ export const HeaderContainer = styled.div`
 `;
 
 export const PetriDishContainer = styled.div`
-  /* border: 1px dashed ${colors.seasalt}; */
-  /* border-radius: 30rem; */
   width: 35rem;
   height: 40rem;
   cursor: pointer;
-  /* margin-top: 20rem; */
-  /* margin-left: 10rem; */
 `;
 
-export const ShelfContainer = styled.div`
-  /* border: 1px dashed ${colors.seasalt}; */
-  /* border-radius: 30rem; */
+export const MainContainer = styled.div`
   width: 100vw;
   height: 100vh;
-  /* cursor: pointer; */
-  /* margin-top: 20rem; */
 `;
 
 export const MilSatContainer = styled.div`
@@ -91,29 +78,21 @@ export const MilSatContainer = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  /* margin-left: -5rem; */
   z-index: 3;
 `;
 
 export const ThreeDWebGroupContainer = styled.div`
-  /* border: 1px dashed ${colors.seasalt}; */
-  /* border-radius: 30rem; */
   width: 50rem;
   height: 25rem;
   cursor: pointer;
-  /* margin-right: 20rem; */
-  /* margin-top: -20rem; */
 `;
 
 export const LogoContainer = styled.div`
-  /* border: 1px dashed ${colors.seasalt}; */
-  /* border-radius: 30rem; */
   position: absolute;
   top: 50;
   left: 50;
   width: 80rem;
   height: 40rem;
-  /* margin-left: -5rem; */
   margin-top: 5rem;
   margin-left: 2rem;
   z-index: 1;
@@ -165,7 +144,6 @@ export const WebLink = styled.a`
   text-decoration-line: underline;
   text-underline-offset: 5px;
   margin-left: 0.4rem;
-  /* z-index: 3; */
 `;
 
 export const Email = styled.p`
