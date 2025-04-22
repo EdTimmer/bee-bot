@@ -12,15 +12,15 @@ function RaiderGroup() {
   useFrame((_, delta) => {
     if (groupRef.current) {
       // rotate the group around the Y axis      
-      groupRef.current.rotation.y -= delta * 0.3;
+      groupRef.current.rotation.y -= delta * 0.27;
     }    
   });
 
   // Rotate mesh around x axis
   useFrame((_, delta) => {
     if (meshRefOne.current && meshRefTwo.current) {
-      meshRefOne.current.rotation.y += delta * 1;
-      meshRefTwo.current.rotation.y += delta * 1;
+      meshRefOne.current.rotation.y += delta * 0.5;
+      meshRefTwo.current.rotation.y += delta * 0.5;
     }
   });
 
@@ -29,8 +29,8 @@ function RaiderGroup() {
       <perspectiveCamera fov={20} position={[0, 0, 10]} />  
 
       <group position={[-0.5, 0.5, -7]} scale={[1, 1, 1]} ref={groupRef} rotation={[0.6, 0, -0.4]}>
-        <Satellite ref={meshRefOne} position={[-15, 0, 0]} rotation={new THREE.Euler(-Math.PI / 2, -0.3, Math.PI / 2)} scale={0.03} type={'raider'} />
-        <Satellite ref={meshRefTwo} position={[-14, 0, 0.7]} rotation={new THREE.Euler(-Math.PI / 2, -0.3, Math.PI / 2)} scale={0.03} type={'raider'} />
+        <Satellite ref={meshRefOne} position={[-15, 0, 0]} rotation={new THREE.Euler(-Math.PI / 2, -Math.PI / 2, Math.PI / 2)} scale={0.08} type={'raider'} color={'#000'} />
+        <Satellite ref={meshRefTwo} position={[-13, 0, 2]} rotation={new THREE.Euler(-Math.PI / 2, -Math.PI /2, Math.PI / 2)} scale={0.08} type={'raider'} color={'#000'} />
       </group>      
     </group>    
   );

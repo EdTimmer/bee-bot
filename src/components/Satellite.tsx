@@ -12,9 +12,10 @@ interface Props {
   position: [number, number, number];
   rotation: [number, number, number];
   type: SatelliteTypes;
+  color?: string;
 }
 
-const Satellite = forwardRef<any, Props>(({ children, rotationSpeed = 1.5, scale = 1.0, position = [0, 0, 0], rotation = [0, 0, 0], type, ...props }, ref) => {
+const Satellite = forwardRef<any, Props>(({ children, rotationSpeed = 1.5, scale = 1.0, color='#888888', position = [0, 0, 0], rotation = [0, 0, 0], type, ...props }, ref) => {
   
   const getSatelliteType = (type: SatelliteTypes) => {
     switch (type) {
@@ -27,7 +28,7 @@ const Satellite = forwardRef<any, Props>(({ children, rotationSpeed = 1.5, scale
       case 'ufo':
         return '../../models/ufo.glb';
       case 'raider':
-        return '../../models/raider_3.glb';
+        return '../../models/raider_5.glb';
       default:
         return '../../models/satellite_civ_1.glb';
     }
@@ -42,7 +43,7 @@ const Satellite = forwardRef<any, Props>(({ children, rotationSpeed = 1.5, scale
 
   const defaultMaterial = useRef(
     new THREE.MeshStandardMaterial({
-      color: 0x888888,
+      color: color,
       metalness: 1.0,
       roughness: 0.2,
     })

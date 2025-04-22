@@ -71,7 +71,7 @@ function App() {
             {!isMobile && <OrbitControls enableDamping enableZoom={false} />}
             <CivSatGroup />
             <UfoGroup />
-            <RaiderGroup />
+            {/* <RaiderGroup /> */}
             <Environment preset="warehouse" />
             <fog attach="fog" args={['#ffffff', 10, 125]} />
           </Canvas>
@@ -83,10 +83,13 @@ function App() {
             <directionalLight position={[0, 0, -2]} intensity={1} />
             <directionalLight position={[0, 5, -2]} intensity={1} />
             <directionalLight position={[0, -5, -2]} intensity={1} />
+
+            <directionalLight position={[0, 0, 20]} intensity={1} />
             
             <directionalLight position={[0, -5, -5]} intensity={1} color={'#f9d87b'} />
             {!isMobile && <OrbitControls enableDamping enableZoom={false} />}
             <MilSatGroup />
+            <RaiderGroup />
             <Environment preset="warehouse" />
           </Canvas>
         </MilSatContainer>
