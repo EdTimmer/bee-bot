@@ -12,8 +12,8 @@ import {
 } from './App.styles'
 import OrbitalIndustriesLogoGroup from './components/OrbitalIndustriesLogoGroup';
 import CivSatGroup from './components/CivSatGroup';
-import MilSatGroup from './components/MilSatGroup';
-import UfoGroup from './components/UfoGroup';
+// import MilSatGroup from './components/MilSatGroup';
+// import UfoGroup from './components/UfoGroup';
 import RaiderGroup from './components/RaiderGroup';
 // import Raider from './components/Raider';
 
