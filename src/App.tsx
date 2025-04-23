@@ -71,7 +71,7 @@ function App() {
             <directionalLight position={[0, -5, -5]} intensity={1} color={'#f9d87b'} />
             {!isMobile && <OrbitControls enableDamping enableZoom={false} />}
             <CivSatGroup />
-            <UfoGroup />
+            {/* <UfoGroup /> */}
             <Environment preset="warehouse" />
             <fog attach="fog" args={['#ffffff', 10, 125]} />
           </Canvas>
@@ -88,7 +88,7 @@ function App() {
             
             <directionalLight position={[0, -5, -5]} intensity={1} color={'#f9d87b'} />
             {!isMobile && <OrbitControls enableDamping enableZoom={false} />}
-            <MilSatGroup />
+            {/* <MilSatGroup /> */}
             <RaiderGroup />
             {/* <Raider position={[0, 0, 0]} rotation={new THREE.Euler(-Math.PI / 2, -Math.PI /2, Math.PI / 2)} scale={0.18} /> */}
             <Environment preset="warehouse" />

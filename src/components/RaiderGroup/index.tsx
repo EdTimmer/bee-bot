@@ -19,13 +19,13 @@ function RaiderGroup() {
   // Rotate mesh around x axis
   useFrame((_, delta) => {
     if (meshRefOne.current && meshRefTwo.current) {
-      meshRefOne.current.rotation.y += delta * 0.9;
-      meshRefTwo.current.rotation.y += delta * 0.9;
+      meshRefOne.current.rotation.y += delta * 0.6;
+      meshRefTwo.current.rotation.y += delta * 0.6;
     }
   });
 
   return (
-    <group position={[0, 1, -5]} scale={[1, 1, 1]} rotation={[0, 0, 0.3]}>
+    <group position={[0, 3, -5]} scale={[1, 1, 1]} rotation={[0, 0, 0.3]}>
       <perspectiveCamera fov={20} position={[0, 0, 10]} />  
 
       <group position={[-0.5, 0.5, -7]} scale={[1, 1, 1]} ref={groupRef} rotation={[0.6, 0, -0.4]}>
