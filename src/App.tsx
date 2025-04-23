@@ -14,7 +14,6 @@ import CivSatGroup from './components/CivSatGroup';
 import MilSatGroup from './components/MilSatGroup';
 import UfoGroup from './components/UfoGroup';
 import RaiderGroup from './components/RaiderGroup';
-import Raider from './components/Raider';
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -91,7 +90,6 @@ function App() {
             {!isMobile && <OrbitControls enableDamping enableZoom={false} />}
             <MilSatGroup />
             <RaiderGroup />
-            {/* <Raider scale={0.2}/> */}
             <Environment preset="warehouse" />
           </Canvas>
         </MilSatContainer>
