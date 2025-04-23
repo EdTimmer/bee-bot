@@ -1,6 +1,7 @@
 import { Canvas } from '@react-three/fiber';
 import { Environment, OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import { useEffect, useState } from 'react';
+// import * as THREE from 'three'
 
 import { 
   AppContainer,
@@ -14,6 +15,7 @@ import CivSatGroup from './components/CivSatGroup';
 import MilSatGroup from './components/MilSatGroup';
 import UfoGroup from './components/UfoGroup';
 import RaiderGroup from './components/RaiderGroup';
+// import Raider from './components/Raider';
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -33,7 +35,6 @@ function App() {
 
   return (
     <AppContainer>
-      {/* <Row> */}
         <LogoContainer>
           <Canvas gl={{ antialias: true }}>
             <PerspectiveCamera makeDefault fov={20} position={[0, 0, 20]} />
@@ -71,7 +72,6 @@ function App() {
             {!isMobile && <OrbitControls enableDamping enableZoom={false} />}
             <CivSatGroup />
             <UfoGroup />
-            {/* <RaiderGroup /> */}
             <Environment preset="warehouse" />
             <fog attach="fog" args={['#ffffff', 10, 125]} />
           </Canvas>
@@ -90,6 +90,7 @@ function App() {
             {!isMobile && <OrbitControls enableDamping enableZoom={false} />}
             <MilSatGroup />
             <RaiderGroup />
+            {/* <Raider position={[0, 0, 0]} rotation={new THREE.Euler(-Math.PI / 2, -Math.PI /2, Math.PI / 2)} scale={0.18} /> */}
             <Environment preset="warehouse" />
           </Canvas>
         </MilSatContainer>
