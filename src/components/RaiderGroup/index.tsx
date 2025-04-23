@@ -29,8 +29,8 @@ function RaiderGroup() {
       <perspectiveCamera fov={20} position={[0, 0, 10]} />  
 
       <group position={[-0.5, 0.5, -7]} scale={[1, 1, 1]} ref={groupRef} rotation={[0.6, 0, -0.4]}>
-        <Raider ref={meshRefOne} position={[-15, 0, 0]} rotation={new THREE.Euler(-Math.PI / 2, -Math.PI / 2, Math.PI / 2)} scale={0.08} />
-        <Raider ref={meshRefTwo} position={[-13, 0, 2]} rotation={new THREE.Euler(-Math.PI / 2, -Math.PI /2, Math.PI / 2)} scale={0.08} />
+        <Raider ref={meshRefOne} position={[-15, 0, 0]} rotation={new THREE.Euler(-Math.PI / 2, -Math.PI / 2 + 2, Math.PI / 2)} scale={0.08} />
+        <Raider ref={meshRefTwo} position={[-13, 0, 2]} rotation={new THREE.Euler(-Math.PI / 2, -Math.PI /2 + 2, Math.PI / 2)} scale={0.08} />
       </group>      
     </group>    
   );
