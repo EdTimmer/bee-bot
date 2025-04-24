@@ -1,5 +1,5 @@
 import { useGLTF } from "@react-three/drei";
-import { forwardRef, useEffect, useLayoutEffect, useRef } from "react";
+import { forwardRef, useRef } from "react";
 import * as THREE from 'three'
 
 type SatelliteTypes = 'civilian1' | 'civilian2' | 'military' | 'ufo' | 'raider';
@@ -94,86 +94,3 @@ const Satellite = forwardRef<any, Props>(({ children, rotationSpeed = 1.5, scale
 })
 
 export default Satellite;
-
-// import { useGLTF } from "@react-three/drei";
-// import { forwardRef, useEffect, useLayoutEffect, useRef } from "react";
-// import * as THREE from 'three';
-
-// type SatelliteTypes = 'civilian1' | 'civilian2' | 'military' | 'ufo' | 'raider';
-
-// interface Props {
-//   children?: React.ReactNode;
-//   rotationSpeed?: number;
-//   [key: string]: any;
-//   scale: number;
-//   position: [number, number, number];
-//   rotation: [number, number, number];
-//   type: SatelliteTypes;
-//   color?: string;
-// }
-
-// const Satellite = forwardRef<any, Props>(({ children, rotationSpeed = 1.5, scale = 1.0, color = '#888888', position = [0, 0, 0], rotation = [0, 0, 0], type, ...props }, ref) => {
-  
-//   // Function to get the correct satellite GLB file based on the type
-//   const getSatelliteType = (type: SatelliteTypes) => {
-//     switch (type) {
-//       case 'civilian1':
-//         return '../../models/civ_sat_1.glb';
-//       case 'civilian2':
-//         return '../../models/civ_sat_2.glb';
-//       case 'military':
-//         return '../../models/mil_sat_1.glb';
-//       case 'ufo':
-//         return '../../models/ufo.glb';
-//       case 'raider':
-//         return '../../models/raider_12.glb';
-//       default:
-//         return '../../models/satellite_civ_1.glb';
-//     }
-//   };
-
-//   // Load the GLB file using the useGLTF hook
-//   const { nodes, materials } = useGLTF(getSatelliteType(type));
-  
-//   const localRef = useRef<THREE.Mesh>(null);
-//   const meshRef = (ref as React.RefObject<THREE.Mesh>) || localRef;
-
-//   useEffect(() => {
-//     console.log("Available nodes:", nodes);
-//   }, [nodes]);
-
-//   // If you want to modify some material properties, you can directly modify them here
-//   useLayoutEffect(() => {
-//     Object.values(materials).forEach((material) => {
-//       if (material instanceof THREE.MeshStandardMaterial) {
-//         material.roughness = 0.2; // Example: setting roughness for all materials
-//         material.color.set(color); // Set color from prop
-//       }
-//     });
-//   }, [materials, color]);
-
-//   // Find the mesh node to use for geometry
-//   const satelliteNode = Object.values(nodes).find(
-//     (node) => (node as THREE.Mesh).isMesh
-//   ) as THREE.Mesh;
-
-//   console.log('rotation :>> ', rotation);
-  
-//   return (
-//     <mesh
-//       castShadow
-//       receiveShadow
-//       ref={meshRef}
-//       position={position}
-//       rotation={rotation}
-//       {...props}
-//       scale={scale}
-//       geometry={satelliteNode?.geometry}
-//       material={materials && !Array.isArray(satelliteNode.material) ? materials[satelliteNode.material.name] : undefined} // Use the material loaded from GLB
-//       dispose={null}>
-//       {children}
-//     </mesh>
-//   );
-// });
-
-// export default Satellite;
