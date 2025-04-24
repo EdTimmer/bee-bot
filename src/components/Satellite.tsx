@@ -5,17 +5,13 @@ import * as THREE from 'three'
 type SatelliteTypes = 'civilian1' | 'civilian2' | 'military' | 'ufo' | 'raider';
 
 interface Props {
-  children?: React.ReactNode;
-  rotationSpeed?: number;
-  [key: string]: any;
   scale: number;
   position: [number, number, number];
   rotation: [number, number, number];
   type: SatelliteTypes;
-  color?: string;
 }
 
-const Satellite = forwardRef<any, Props>(({ children, rotationSpeed = 1.5, scale = 1.0, color='#888888', position = [0, 0, 0], rotation = [0, 0, 0], type, ...props }, ref) => {
+const Satellite = forwardRef<any, Props>(({scale = 1.0, position = [0, 0, 0], rotation = [0, 0, 0], type}, ref) => {
   
   const getSatelliteType = (type: SatelliteTypes) => {
     switch (type) {
@@ -62,7 +58,7 @@ const Satellite = forwardRef<any, Props>(({ children, rotationSpeed = 1.5, scale
 
   
   return (
-    <group position={position} rotation={rotation} ref={ref}>
+    <group position={position} rotation={new THREE.Euler(rotation[0], rotation[1], rotation[2])} ref={ref}>
       {Object.values(nodes)
         .filter((n) => n instanceof THREE.Mesh)
         .map((mesh) => (
