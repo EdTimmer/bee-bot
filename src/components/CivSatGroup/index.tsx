@@ -14,7 +14,7 @@ function CivSatGroup() {
   });
 
   return (
-    <group ref={groupRef} position={[3.5, 3, -8]} scale={[1, 1, 1]} rotation={[0.6, 0, 0]}>
+    <group ref={groupRef} position={[3, 3, -9]} scale={[1, 1, 1]} rotation={[0.5, 0, 0]}>
       <Satellite
         position={[9.5, 0, 0]}
         rotation={[Math.PI / 2, 0.2, 0]}
