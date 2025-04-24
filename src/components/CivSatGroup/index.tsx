@@ -8,9 +8,14 @@ function CivSatGroup() {
   const groupOneRef = useRef<Group>(null);
   const groupTwoRef = useRef<Group>(null);
 
+  const groupRef = useRef<Group>(null);
+
+  const civSatOneRef = useRef<THREE.Mesh>(null);
+  const civSatTwoRef = useRef<THREE.Mesh>(null);
+
   useFrame((_, delta) => {
-    if (groupOneRef.current) {   
-      groupOneRef.current.rotation.y -= delta * 0.1;
+    if (groupRef.current) {   
+      groupRef.current.rotation.y -= delta * 0.1;
     }
     
   });
@@ -18,42 +23,28 @@ function CivSatGroup() {
   useFrame((_, delta) => {
     if (groupTwoRef.current) {
       groupTwoRef.current.rotation.y -= delta * 0.1;
-    }
-    
-  });
-
-
-  const milSatRef = useRef<THREE.Mesh>(null);
-  const timeRef = useRef(0);
-  useFrame((_, delta) => {
-    if (milSatRef.current) {
-      milSatRef.current.rotation.z -= delta * 0.2;
-    }
-  });
-
-
-  useFrame((_, delta) => {
-    const radius = 10;
-    const speed = 0.05;
-
-    timeRef.current += delta * speed;
-        
-    if (milSatRef.current) {
-      milSatRef.current.position.x = Math.sin(timeRef.current) * radius;     
-      milSatRef.current.position.z = Math.cos(timeRef.current) * radius + 29;
-    }
+    }    
   });
 
   return (
-    <group position={[3, -2.5, -5]} scale={[1, 1, 1]} >
-      <perspectiveCamera fov={20} position={[0, 0, 10]} />      
-      <group position={[-0.5, 0, -5]} scale={[1, 1, 1]} ref={groupOneRef} rotation={[0.4, 0, 0.4]}>
-        <Satellite position={[12, 0, 0]} rotation={new THREE.Euler(0, 0, Math.PI)} scale={0.07} offset={[-10, -5, 0]}  type={'civilian1'} />
-      </group>
+    <group ref={groupRef} position={[3.5, 3, -8]} scale={[1, 1, 1]} rotation={[0.6, 0, 0]}>
+      {/* <group position={[-0.5, 0, 0]} scale={[1, 1, 1]} ref={groupOneRef} rotation={[0.4, 0, 0.2]}> */}
+        <Satellite
+          position={[9.5, 0, 0]}
+          rotation={new THREE.Euler(Math.PI / 2, 0.2, 0)}
+          scale={0.07}
+          offset={[-10, -5, 0]}
+          type={'civilian1'}
+        />
 
-      <group position={[-0.5, 0, -5]} scale={[1, 1, 1]} ref={groupTwoRef} rotation={[0.4, 0, -0.4]}>
-        <Satellite position={[-12, 0, 0]} rotation={new THREE.Euler(Math.PI, Math.PI, -0.3)} scale={0.05} offset={[-10, -5, 0]}  type={'civilian2'} />
-      </group>      
+      {/* <group position={[-2, 0, -5]} scale={[1, 1, 1]} ref={groupTwoRef} rotation={[0.4, 0, -0.4]}> */}
+        <Satellite
+          position={[-9.5, 0, 0]}
+          rotation={new THREE.Euler(-Math.PI / 2, Math.PI / 2 + 0.2, Math.PI)}
+          scale={0.08} offset={[-10, -5, 0]}
+          type={'civilian2'}
+        />
+      {/* </group>       */}
     </group>    
   );
 }

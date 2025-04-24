@@ -20,9 +20,9 @@ const Satellite = forwardRef<any, Props>(({ children, rotationSpeed = 1.5, scale
   const getSatelliteType = (type: SatelliteTypes) => {
     switch (type) {
       case 'civilian1':
-        return '../../models/civ_sat_1.glb';
+        return '../../models/civ_sat_1_3.glb';
       case 'civilian2':
-        return '../../models/civ_sat_2.glb';
+        return '../../models/civ_sat_2_6.glb';
       case 'military':
         return '../../models/mil_sat_1.glb';
       case 'ufo':
@@ -37,43 +37,59 @@ const Satellite = forwardRef<any, Props>(({ children, rotationSpeed = 1.5, scale
   const localRef = useRef<THREE.Mesh>(null);
   const meshRef = (ref as React.RefObject<THREE.Mesh>) || localRef;
 
-  useEffect(() => {
-    console.log("Available nodes:", nodes);
-  }, [nodes]);
+  // useEffect(() => {
+  //   console.log("Available nodes:", nodes);
+  // }, [nodes]);
 
-  const defaultMaterial = useRef(
-    new THREE.MeshStandardMaterial({
-      color: color,
-      metalness: 1.0,
-      roughness: 0.2,
-    })
-  );
+  // const defaultMaterial = useRef(
+  //   new THREE.MeshStandardMaterial({
+  //     color: color,
+  //     metalness: 1.0,
+  //     roughness: 0.2,
+  //   })
+  // );
 
-  useLayoutEffect(() => {
-    Object.values(materials).forEach((material) => {
-      (material as THREE.MeshStandardMaterial).roughness = 0
-    })
-  }, [])
+  // useLayoutEffect(() => {
+  //   Object.values(materials).forEach((material) => {
+  //     (material as THREE.MeshStandardMaterial).roughness = 0
+  //   })
+  // }, [])
 
-  const satelliteNode = Object.values(nodes).find(
-    (node) => (node as THREE.Mesh).isMesh
-  ) as THREE.Mesh;
-  console.log('rotation :>> ', rotation);
+  // const satelliteNode = Object.values(nodes).find(
+  //   (node) => (node as THREE.Mesh).isMesh
+  // ) as THREE.Mesh;
+  // console.log('rotation :>> ', rotation);
+
   
   return (
-    <mesh
-      castShadow
-      receiveShadow
-      ref={meshRef}
-      position={position}
-      rotation={rotation}
-      {...props}
-      scale={scale}
-      geometry={satelliteNode?.geometry}
-      material={defaultMaterial.current}
-      dispose={null}>
-      {children}
-    </mesh>
+    <group position={position} rotation={rotation} ref={ref}>
+      {Object.values(nodes)
+        .filter((n) => n instanceof THREE.Mesh)
+        .map((mesh) => (
+          <mesh
+            key={mesh.uuid}
+            geometry={mesh.geometry}
+            material={materials[mesh.material.name]}
+            castShadow
+            receiveShadow
+            scale={scale}
+            ref={meshRef}
+          />
+        ))}
+    </group>
+    // <mesh
+    //   castShadow
+    //   receiveShadow
+    //   ref={meshRef}
+    //   position={position}
+    //   rotation={rotation}
+    //   {...props}
+    //   scale={scale}
+    //   geometry={satelliteNode?.geometry}
+    //   material={defaultMaterial.current}
+    //   dispose={null}>
+    //   {children}
+    // </mesh>
   )
 })
 

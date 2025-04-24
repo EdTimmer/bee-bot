@@ -16,8 +16,7 @@ const Raider = forwardRef<any, Props>(({scale = 1.0, position = [0, 0, 0], rotat
 
   // Load the GLB file using the useGLTF hook
   const { nodes, materials } = useGLTF('../../models/raider_26.glb');
-  console.log('nodes:', Object.keys(nodes))
-  console.log('materials:', Object.keys(materials))
+
 
   
   return (
