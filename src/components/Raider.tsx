@@ -8,16 +8,10 @@ interface Props {
   scale: number;
   position: [number, number, number];
   rotation: [number, number, number];
-  ref: React.Ref<any>;
 }
 
 const Raider = forwardRef<any, Props>(({scale = 1.0, position = [0, 0, 0], rotation = [0, 0, 0]}, ref) => {
-  
-
-  // Load the GLB file using the useGLTF hook
-  const { nodes, materials } = useGLTF('../../models/raider_26.glb');
-
-
+  const { nodes, materials } = useGLTF('../../models/raider_27.glb');
   
   return (
     <group position={position} rotation={rotation} ref={ref}>
