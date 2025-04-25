@@ -11,7 +11,7 @@ interface Props {
 }
 
 const Raider = forwardRef<any, Props>(({scale = 1.0, position = [0, 0, 0], rotation = [0, 0, 0]}, ref) => {
-  const { nodes, materials } = useGLTF('../../models/raider_27.glb');
+  const { nodes, materials } = useGLTF('../../models/raider_29.glb');
   
   return (
     <group position={position} rotation={rotation} ref={ref}>
