@@ -7,7 +7,8 @@ import {
   MainContainer,
   LogoContainer,
   SceneContent,
-  MilSatContainer
+  MilSatContainer,
+  LinkContainer
 } from './App.styles'
 import OrbitalIndustriesLogoGroup from './components/OrbitalIndustriesLogoGroup';
 import CivSatGroup from './components/CivSatGroup';
@@ -104,6 +105,10 @@ function App() {
         </MilSatContainer>
 
       </SceneContent>
+
+      <LinkContainer>
+        <a href="https://www.edtimmer.com/" target="_blank" aria-label="Link to portfolio" title="Link to portfolio">edtimmer.com</a>
+      </LinkContainer>
 
     </AppContainer>
   )

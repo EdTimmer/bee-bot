@@ -161,3 +161,22 @@ export const CenterSection = styled.div`
   justify-content: center;
   align-items: flex-start;
 `;
+
+export const LinkContainer = styled.div`
+  position: absolute;
+  bottom: 30px;
+  right: 40px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  z-index: 30;
+
+  a {
+    color: #6c757dff;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+`;
