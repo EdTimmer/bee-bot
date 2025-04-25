@@ -16,7 +16,7 @@ const Satellite = forwardRef<any, Props>(({scale = 1.0, position = [0, 0, 0], ro
   const getSatelliteType = (type: SatelliteTypes) => {
     switch (type) {
       case 'civilian1':
-        return '../../models/civ_sat_1_4.glb';
+        return '../../models/civ_sat_1_5.glb';
       case 'civilian2':
         return '../../models/civ_sat_2_7.glb';
       default:
