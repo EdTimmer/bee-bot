@@ -83,10 +83,10 @@ function App() {
           <Canvas gl={{ antialias: true }}>
             <PerspectiveCamera makeDefault fov={20} position={[0, 0, 20]} />
             <RaiderGroup 
-              position={[-0.5, 3.5, -12]}
+              position={[-0.5, 3.5, -10]}
               rotation={[0.6, 0, -0.3]}
               rollSpeed={0.6}
-              speed={0.27}
+              speed={0.24}
               raiderOnePosition={[-15, 0, 0]}
               raiderTwoPosition={[-13, 0, 2]}
               raiderRotation={[-Math.PI / 2, -Math.PI / 2 + 2, Math.PI / 2]}
