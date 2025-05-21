@@ -5,7 +5,7 @@ import landscapeImage from '/images/landscape_5.jpg';
 export const AppContainer = styled.div`
   position: relative;
   z-index: 1;
-  background-image: url(${landscapeImage});
+  /* background-image: url(${landscapeImage}); */
   font-family: 'Roboto Mono', monospace;
   background-size: cover;
   background-position: center;
