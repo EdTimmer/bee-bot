@@ -35,7 +35,7 @@ function BeeBotGroup({position, rotation, speed, isClockwise}: Props) {
 
       <BeeBotSilver
         position={[2, -1, 0]}
-        rotation={[0, 0, 0]}
+        rotation={[0.2, 0, 0]}
         scale={4.0}
       />
     </group>

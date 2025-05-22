@@ -38,10 +38,10 @@ function App() {
           <Canvas gl={{ antialias: true }}>
             <PerspectiveCamera makeDefault fov={20} position={[0, 0, 20]} />
             <ambientLight intensity={0.5} />
-            {/* <directionalLight position={[0, 0, 10]} intensity={1} /> */}
+            <directionalLight position={[-10, -10, 10]} intensity={0.2} />
 
             <BeeBotGroup position={[0, 0, 0]} rotation={[0, 0, 0]} speed={0} isClockwise={false} />
-            <Environment preset="sunset" /> // city
+            <Environment preset="apartment" /> // city
             <OrbitControls enableDamping enableZoom={true} />
           </Canvas>
         </MainContainer>
