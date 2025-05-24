@@ -5,14 +5,10 @@ import { useEffect, useState } from 'react';
 import { 
   AppContainer,
   MainContainer,
-  LogoContainer,
   SceneContent,
-  MilSatContainer,
   LinkContainer
 } from './App.styles'
-import OrbitalIndustriesLogoGroup from './components/OrbitalIndustriesLogoGroup';
-import CivSatGroup from './components/CivSatGroup';
-import RaiderGroup from './components/RaiderGroup';
+
 import BeeBotGroup from './components/BeeBotGroup';
 
 function App() {
@@ -38,10 +34,24 @@ function App() {
           <Canvas gl={{ antialias: true }}>
             <PerspectiveCamera makeDefault fov={20} position={[0, 0, 20]} />
             <ambientLight intensity={0.5} />
-            {/* <directionalLight position={[-10, -10, 10]} intensity={0.2} /> */}
+            {/* <directionalLight position={[0, 0, 5]} /> */}
+
+            {/* <directionalLight position={[0, 5, 5]} /> //center top */}
+            {/* <directionalLight position={[0, -5, 5]} /> //center bottom */}
+
+            {/* <directionalLight position={[-5, 0, 5]} /> // center left */}
+            {/* <directionalLight position={[5, 0, 5]} /> // center right */}
+
+            <directionalLight position={[-5, 5, 5]} /> // top left
+            <directionalLight position={[5, 5, 5]} /> // top right
+
+            <directionalLight position={[-5, -5, 5]} /> // bottom left
+            <directionalLight position={[5, -5, 5]} /> // bottom right
+
+            
 
             <BeeBotGroup position={[0, 0, 0]} rotation={[0, 0, 0]} speed={0} isClockwise={false} />
-            <Environment files="/images/burnt_warehouse_2k.hdr" background /> // city
+            <Environment background files="/images/satara_night_no_lamps_2k.hdr" /> {/* city */}
             <OrbitControls enableDamping enableZoom={true} />
           </Canvas>
         </MainContainer>

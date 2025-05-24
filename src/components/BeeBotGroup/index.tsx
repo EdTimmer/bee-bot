@@ -4,8 +4,11 @@ import { Group } from 'three';
 import Satellite from '../Satellite';
 import BeeBotBrown from '../BeeBotBrown';
 import BeeBotSilver from '../BeeBotSilver';
-import BeeBotGold from '../BeeBotGold';
+import BeeBotYellow from '../BeeBotYellow';
 import BeeBotPurple from '../BeeBotPurlple';
+import BeeBotBlue from '../BeeBotBlue';
+import BeeBotRed from '../BeeBotRed';
+import BeeBotGreen from '../BeeBotGreen';
 
 interface Props {
   position: [number, number, number];
@@ -29,23 +32,28 @@ function BeeBotGroup({position, rotation, speed, isClockwise}: Props) {
 
   return (
     <group ref={groupRef} position={position} scale={[1, 1, 1]} rotation={rotation}>
-      <BeeBotBrown
+      <BeeBotBlue
         position={[-3, -1, 0]}
         rotation={[0, 0, 0]}
         scale={4.0}
       />
-      <BeeBotSilver
+      <BeeBotRed
         position={[3, -1, 0]}
         rotation={[0, 0, 0]}
         scale={4.0}
       />
-      <BeeBotGold
+      <BeeBotYellow
         position={[0, -1, 3]}
         rotation={[0, 0, 0]}
         scale={4.0}
       />
       <BeeBotPurple
         position={[0, -1, -3]}
+        rotation={[0, 0, 0]}
+        scale={4.0}
+      />
+      <BeeBotGreen
+        position={[0, -1, 0]}
         rotation={[0, 0, 0]}
         scale={4.0}
       />
