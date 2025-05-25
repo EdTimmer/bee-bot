@@ -11,7 +11,7 @@ interface Props {
 const BeeBotRed = forwardRef<any, Props>(({scale = 1.0, position = [0, 0, 0], rotation = [0, 0, 0]}, ref) => {
   
 
-  const { nodes, materials } = useGLTF('../../models/bee_bot6_red_2.glb');
+  const { nodes, materials } = useGLTF('../../models/bee_bot7_red.glb');
 
   return (
     <group position={position} rotation={new THREE.Euler(rotation[0], rotation[1], rotation[2])} ref={ref}>

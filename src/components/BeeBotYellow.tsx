@@ -11,7 +11,7 @@ interface Props {
 const BeeBotYellow = forwardRef<any, Props>(({scale = 1.0, position = [0, 0, 0], rotation = [0, 0, 0]}, ref) => {
   
 
-  const { nodes, materials } = useGLTF('../../models/bee_bot6_yellow_2.glb');
+  const { nodes, materials } = useGLTF('../../models/bee_bot7_yellow.glb');
 
   return (
     <group position={position} rotation={new THREE.Euler(rotation[0], rotation[1], rotation[2])} ref={ref}>
@@ -24,7 +24,7 @@ const BeeBotYellow = forwardRef<any, Props>(({scale = 1.0, position = [0, 0, 0],
             material={materials[mesh.material.name]}
             castShadow
             receiveShadow
-            scale={scale}            
+            scale={scale}
           />
         ))}
     </group>
