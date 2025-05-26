@@ -1,9 +1,9 @@
 import { Canvas } from '@react-three/fiber';
 import { Environment, OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import * as THREE from 'three';
-import AutoRenewOutlined from '@mui/icons-material/AutoRenewOutlined'
 import IconButton from '@mui/material/IconButton'
 import CachedOutlined from '@mui/icons-material/CachedOutlined'
+import AutoRenewOutlined from '@mui/icons-material/AutorenewOutlined';
 
 
 import { 
