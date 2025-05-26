@@ -1,8 +1,8 @@
+import { useState, useEffect } from 'react'
 import { Canvas } from '@react-three/fiber';
 import { Environment, OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import * as THREE from 'three';
 import { Leva, useControls } from 'leva'
-
 import { 
   AppContainer,
   MainContainer,
@@ -10,12 +10,25 @@ import {
   LinkContainer
 } from './App.styles'
 import BeeBotGroup from './components/BeeBotGroup';
-import { useState } from 'react';
+;
+
+function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < breakpoint);
+  useEffect(() => {
+    function onResize() {
+      setIsMobile(window.innerWidth < breakpoint);
+    }
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, [breakpoint]);
+  return isMobile;
+}
 
 
 function App() {
   const [isGroupClockwise, setIsGroupClockwise] = useState(true);
   const [isBotClockwise, setIsBotClockwise] = useState(true);
+  const isMobile = useIsMobile();
 
   const { groupSpeed, botSpeed, minRadius, maxRadius, period } = useControls({
     groupSpeed: { value: 0.3, min: 0, max: 1, step: 0.01, label: 'Group speed' },
@@ -39,7 +52,7 @@ function App() {
 
   return (
     <>
-      <Leva theme={{ sizes: { rootWidth: '350px' } }} />
+      {!isMobile && <Leva theme={{ sizes: { rootWidth: '350px' } }} />}
       <AppContainer>
         <SceneContent>
           <MainContainer>
@@ -53,7 +66,7 @@ function App() {
                 gl.toneMappingExposure = 1.0;
               }}
             >
-              <PerspectiveCamera makeDefault fov={20} position={[0, 2, 16]} />
+              <PerspectiveCamera makeDefault fov={20} position={[-18, 2, 0]} />
 
               <directionalLight position={[0, 5, 5]} />
               <directionalLight position={[0, -5, 5]} />            
