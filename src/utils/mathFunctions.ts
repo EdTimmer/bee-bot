@@ -28,3 +28,15 @@ export function getPentagonRotations(): [number, number, number][] {
 
     return rotations;
 }
+
+export function getFluctuatingRadius(
+  minRadius: number,
+  maxRadius: number,
+  period: number, // in seconds
+  time: number    // in seconds
+): number {
+  const mid = (minRadius + maxRadius) / 2;
+  const amp = (maxRadius - minRadius) / 2;
+  // sin(2πt/period) goes from –1 to +1
+  return mid + amp * Math.sin((2 * Math.PI * time) / period);
+}

@@ -1,7 +1,14 @@
 import { Canvas } from '@react-three/fiber';
 import { CameraShake, Environment, OrbitControls, PerspectiveCamera } from '@react-three/drei';
-// import { useEffect, useState } from 'react';
 import * as THREE from 'three';
+// import { CircularProgress, IconButton } from '@mui/material';
+// import { SwapHorizOutlined } from '@mui/icons-material';
+import SwapHorizOutlined from '@mui/icons-material/SwapHorizOutlined'
+import AutoRenewOutlined from '@mui/icons-material/AutoRenewOutlined'
+import IconButton from '@mui/material/IconButton'
+import Cycle from '@mui/icons-material/Cyclone'
+import CachedOutlined from '@mui/icons-material/CachedOutlined'
+
 
 import { 
   AppContainer,
@@ -11,8 +18,11 @@ import {
 } from './App.styles'
 
 import BeeBotGroup from './components/BeeBotGroup';
+import { useState } from 'react';
 
 function App() {
+  const [isGroupClockwise, setIsGroupClockwise] = useState(true);
+  const [isBotClockwise, setIsBotClockwise] = useState(true);
   // const [isMobile, setIsMobile] = useState(false);
 
   // useEffect(() => {
@@ -42,49 +52,97 @@ function App() {
               gl.toneMappingExposure = 1.0;
             }}
           >
-            <PerspectiveCamera makeDefault fov={20} position={[0, 0, 16]} />
-            {/* <ambientLight intensity={0.5} /> */}
-            {/* <directionalLight position={[0, 0, 5]} /> */}
+            <PerspectiveCamera makeDefault fov={20} position={[0, 2, 16]} />
 
-            <directionalLight position={[0, 5, 5]} /> //center top
-            <directionalLight position={[0, -5, 5]} /> //center bottom
-
-            {/* <directionalLight position={[-5, 0, 5]} /> // center left */}
-            {/* <directionalLight position={[5, 0, 5]} /> // center right */}
-
-            {/* <directionalLight position={[-5, 5, 5]} /> // top left
-            <directionalLight position={[5, 5, 5]} /> // top right
-
-            <directionalLight position={[-5, -5, 5]} /> // bottom left
-            <directionalLight position={[5, -5, 5]} /> // bottom right */}
-
-            
+            <directionalLight position={[0, 5, 5]} />
+            <directionalLight position={[0, -5, 5]} />            
 
             <BeeBotGroup
-              position={[0, -2.0, 0]}
+              position={[0, -1.5, 0]}
               rotation={[0, 0, 0]}
               speed={0.3}
-              isGroupClockwise={false}
+              isGroupClockwise={isGroupClockwise}
+              isBotClockwise={isBotClockwise}
               botAxisRotationSpeed={0.015}
+              minRadius={2}
+              maxRadius={5}
+              period={10}
             />
-            {/* <Environment background files="/images/satara_night_no_lamps_2k.hdr" /> */}
-            <Environment background preset="forest" backgroundIntensity={0.5} />
-            <OrbitControls enableDamping enableZoom={true} />
 
-            <CameraShake
-              maxYaw={0.05} // Max amount camera can yaw in either direction
-              maxPitch={0.05} // Max amount camera can pitch in either direction
-              maxRoll={0.05} // Max amount camera can roll in either direction
-              yawFrequency={0.05} // Frequency of the the yaw rotation
-              pitchFrequency={0.05} // Frequency of the pitch rotation
-              rollFrequency={0.05} // Frequency of the roll rotation
-              intensity={1} // initial intensity of the shake
-              decayRate={0.65} // if decay = true this is the rate at which intensity will reduce at />
-            />
+            <Environment background preset="forest" backgroundIntensity={0.3} />
+            {/* <CameraShake
+              maxYaw={0.05}
+              maxPitch={0.05}
+              maxRoll={0.05}
+              yawFrequency={0.05}
+              pitchFrequency={0.05}
+              rollFrequency={0.05}
+              intensity={1}
+              decayRate={0.65}
+            /> */}
+            <OrbitControls enableDamping={true} />
           </Canvas>
+
+
         </MainContainer>
 
       </SceneContent>
+
+      <div>
+        <IconButton 
+          aria-label="direction"
+          type="button"
+          onClick={() => setIsGroupClockwise(!isGroupClockwise)}
+          sx={{ 
+            color: 'white', 
+            position: 'absolute',
+            rotate: '90deg',
+            top: '20px', 
+            right: '100px',
+            backgroundColor: 'rgba(0,0,0,0.2)',
+            // opacity: isTransitioning ? 0.7 : 1,
+            transition: 'all 0.3s ease',
+            '&:hover': {
+              backgroundColor: 'rgba(0,0,0,0.4)',
+            },
+            '&:focus': {
+              outline: 'none',
+            },
+            '&:focus-visible': {
+              outline: 'none',
+            },
+          }}
+        >
+          <AutoRenewOutlined />
+        </IconButton>
+
+        <IconButton 
+          aria-label="direction"
+          type="button"
+          onClick={() => setIsBotClockwise(!isBotClockwise)}
+          sx={{ 
+            color: 'white', 
+            position: 'absolute',
+            rotate: '90deg',
+            top: '20px', 
+            right: '40px',
+            backgroundColor: 'rgba(0,0,0,0.2)',
+            // opacity: isTransitioning ? 0.7 : 1,
+            transition: 'all 0.3s ease',
+            '&:hover': {
+              backgroundColor: 'rgba(0,0,0,0.4)',
+            },
+            '&:focus': {
+              outline: 'none',
+            },
+            '&:focus-visible': {
+              outline: 'none',
+            },
+          }}
+        >
+          <CachedOutlined />
+        </IconButton>        
+      </div>
 
       <LinkContainer>
         <a href="https://www.edtimmer.com/" target="_blank" aria-label="Link to portfolio" title="Link to portfolio">edtimmer.com</a>
