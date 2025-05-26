@@ -1,10 +1,7 @@
 import { Canvas } from '@react-three/fiber';
 import { Environment, OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import * as THREE from 'three';
-import IconButton from '@mui/material/IconButton'
-import CachedOutlined from '@mui/icons-material/CachedOutlined'
-import AutoRenewOutlined from '@mui/icons-material/AutorenewOutlined';
-
+import { Leva, useControls } from 'leva'
 
 import { 
   AppContainer,
@@ -12,113 +9,78 @@ import {
   SceneContent,
   LinkContainer
 } from './App.styles'
-
 import BeeBotGroup from './components/BeeBotGroup';
 import { useState } from 'react';
+
 
 function App() {
   const [isGroupClockwise, setIsGroupClockwise] = useState(true);
   const [isBotClockwise, setIsBotClockwise] = useState(true);
 
+  const { groupSpeed, botSpeed, minRadius, maxRadius, period } = useControls({
+    groupSpeed: { value: 0.3, min: 0, max: 1, step: 0.01, label: 'Group speed' },
+    botSpeed: { value: 0.015, min: 0, max: 0.1, step: 0.001, label: 'Bot speed' },
+    groupDirection: {
+      value: isGroupClockwise,
+      onChange: (value) => setIsGroupClockwise(value),
+      label: 'Group direction',
+      options: { clockwise: true, counterclockwise: false }
+    },
+    botSpinDirection: {
+      value: isBotClockwise,
+      onChange: (value) => setIsBotClockwise(value),
+      label: 'Bot spin direction',
+      options: { clockwise: true, counterclockwise: false }
+    },
+    minRadius: { value: 2, min: 0, max: 5, step: 0.1, label: 'Group min radius' },
+    maxRadius: { value: 5, min: 0, max: 10, step: 0.1, label: 'Group max radius' },
+    period: { value: 10, min: 1, max: 30, step: 1, label: 'Fluctuation period (s)' }
+  })
+
   return (
-    <AppContainer>
-      <SceneContent>
-        <MainContainer>
-          <Canvas
-            gl={{
-              antialias: true,
-              toneMapping: THREE.ACESFilmicToneMapping
-            }}
-            onCreated={({ gl }) => {
-              gl.toneMapping = THREE.ACESFilmicToneMapping;
-              gl.toneMappingExposure = 1.0;
-            }}
-          >
-            <PerspectiveCamera makeDefault fov={20} position={[0, 2, 16]} />
+    <>
+      <Leva theme={{ sizes: { rootWidth: '350px' } }} />
+      <AppContainer>
+        <SceneContent>
+          <MainContainer>
+            <Canvas
+              gl={{
+                antialias: true,
+                toneMapping: THREE.ACESFilmicToneMapping
+              }}
+              onCreated={({ gl }) => {
+                gl.toneMapping = THREE.ACESFilmicToneMapping;
+                gl.toneMappingExposure = 1.0;
+              }}
+            >
+              <PerspectiveCamera makeDefault fov={20} position={[0, 2, 16]} />
 
-            <directionalLight position={[0, 5, 5]} />
-            <directionalLight position={[0, -5, 5]} />            
+              <directionalLight position={[0, 5, 5]} />
+              <directionalLight position={[0, -5, 5]} />            
 
-            <BeeBotGroup
-              position={[0, -1.5, 0]}
-              rotation={[0, 0, 0]}
-              speed={0.3}
-              isGroupClockwise={isGroupClockwise}
-              isBotClockwise={isBotClockwise}
-              botAxisRotationSpeed={0.015}
-              minRadius={2}
-              maxRadius={5}
-              period={10}
-            />
+              <BeeBotGroup
+                position={[0, -1.5, 0]}
+                rotation={[0, 0, 0]}
+                speed={groupSpeed}
+                isGroupClockwise={isGroupClockwise}
+                isBotClockwise={isBotClockwise}
+                botAxisRotationSpeed={botSpeed}
+                minRadius={minRadius}
+                maxRadius={maxRadius}
+                period={period}
+              />
 
-            <Environment background preset="forest" backgroundIntensity={0.3} />
-            <OrbitControls enableDamping={true} />
-          </Canvas>
+              <Environment background preset="forest" backgroundIntensity={0.3} />
+              <OrbitControls enableDamping={true} />
+            </Canvas>
+          </MainContainer>
+        </SceneContent>
 
-
-        </MainContainer>
-
-      </SceneContent>
-
-      <div>
-        <IconButton 
-          aria-label="direction"
-          type="button"
-          onClick={() => setIsGroupClockwise(!isGroupClockwise)}
-          sx={{ 
-            color: 'white', 
-            position: 'absolute',
-            rotate: '90deg',
-            top: '20px', 
-            right: '100px',
-            backgroundColor: 'rgba(0,0,0,0.2)',
-            transition: 'all 0.3s ease',
-            '&:hover': {
-              backgroundColor: 'rgba(0,0,0,0.4)',
-            },
-            '&:focus': {
-              outline: 'none',
-            },
-            '&:focus-visible': {
-              outline: 'none',
-            },
-          }}
-        >
-          <AutoRenewOutlined />
-        </IconButton>
-
-        <IconButton 
-          aria-label="direction"
-          type="button"
-          onClick={() => setIsBotClockwise(!isBotClockwise)}
-          sx={{ 
-            color: 'white', 
-            position: 'absolute',
-            rotate: '90deg',
-            top: '20px', 
-            right: '40px',
-            backgroundColor: 'rgba(0,0,0,0.2)',
-            transition: 'all 0.3s ease',
-            '&:hover': {
-              backgroundColor: 'rgba(0,0,0,0.4)',
-            },
-            '&:focus': {
-              outline: 'none',
-            },
-            '&:focus-visible': {
-              outline: 'none',
-            },
-          }}
-        >
-          <CachedOutlined />
-        </IconButton>        
-      </div>
-
-      <LinkContainer>
-        <a href="https://www.edtimmer.com/" target="_blank" aria-label="Link to portfolio" title="Link to portfolio">edtimmer.com</a>
-      </LinkContainer>
-
-    </AppContainer>
+        <LinkContainer>
+          <a href="https://www.edtimmer.com/" target="_blank" aria-label="Link to portfolio" title="Link to portfolio">edtimmer.com</a>
+        </LinkContainer>
+      </AppContainer>
+    </>
   )
 }
 

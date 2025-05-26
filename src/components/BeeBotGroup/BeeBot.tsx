@@ -67,7 +67,7 @@ const BeeBot = forwardRef<THREE.Group, Props>(
 
     return (
       <group ref={parentGroupRef} position={position} rotation={[0, 0, 0]}>
-        <group ref={groupRef} position={[0, 0.2, 0]}>
+        <group ref={groupRef} position={[0, 0.3, 0]}>
           {Object.values(nodes)
             .filter((n) => n instanceof THREE.Mesh)
             .map((mesh) => (
