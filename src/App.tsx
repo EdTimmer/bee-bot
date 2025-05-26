@@ -1,12 +1,8 @@
 import { Canvas } from '@react-three/fiber';
-import { CameraShake, Environment, OrbitControls, PerspectiveCamera } from '@react-three/drei';
+import { Environment, OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import * as THREE from 'three';
-// import { CircularProgress, IconButton } from '@mui/material';
-// import { SwapHorizOutlined } from '@mui/icons-material';
-import SwapHorizOutlined from '@mui/icons-material/SwapHorizOutlined'
 import AutoRenewOutlined from '@mui/icons-material/AutoRenewOutlined'
 import IconButton from '@mui/material/IconButton'
-import Cycle from '@mui/icons-material/Cyclone'
 import CachedOutlined from '@mui/icons-material/CachedOutlined'
 
 
@@ -23,20 +19,6 @@ import { useState } from 'react';
 function App() {
   const [isGroupClockwise, setIsGroupClockwise] = useState(true);
   const [isBotClockwise, setIsBotClockwise] = useState(true);
-  // const [isMobile, setIsMobile] = useState(false);
-
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setIsMobile(window.innerWidth <= 768); // 768px is a common breakpoint for mobile
-  //   };
-
-  //   handleResize();
-  //   window.addEventListener('resize', handleResize);
-
-  //   return () => {
-  //     window.removeEventListener('resize', handleResize);
-  //   };
-  // }, []);
 
   return (
     <AppContainer>
@@ -70,16 +52,6 @@ function App() {
             />
 
             <Environment background preset="forest" backgroundIntensity={0.3} />
-            {/* <CameraShake
-              maxYaw={0.05}
-              maxPitch={0.05}
-              maxRoll={0.05}
-              yawFrequency={0.05}
-              pitchFrequency={0.05}
-              rollFrequency={0.05}
-              intensity={1}
-              decayRate={0.65}
-            /> */}
             <OrbitControls enableDamping={true} />
           </Canvas>
 
@@ -100,7 +72,6 @@ function App() {
             top: '20px', 
             right: '100px',
             backgroundColor: 'rgba(0,0,0,0.2)',
-            // opacity: isTransitioning ? 0.7 : 1,
             transition: 'all 0.3s ease',
             '&:hover': {
               backgroundColor: 'rgba(0,0,0,0.4)',
@@ -127,7 +98,6 @@ function App() {
             top: '20px', 
             right: '40px',
             backgroundColor: 'rgba(0,0,0,0.2)',
-            // opacity: isTransitioning ? 0.7 : 1,
             transition: 'all 0.3s ease',
             '&:hover': {
               backgroundColor: 'rgba(0,0,0,0.4)',
