@@ -13,14 +13,20 @@ import BeeBotGroup from './components/BeeBotGroup';
 ;
 
 function useIsMobile(breakpoint = 768) {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < breakpoint);
+  const [isMobile, setIsMobile] = useState(false);
+  
   useEffect(() => {
+    // Set the initial value on mount
+    setIsMobile(window.innerWidth < breakpoint);
+    
     function onResize() {
       setIsMobile(window.innerWidth < breakpoint);
     }
+    
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
   }, [breakpoint]);
+  
   return isMobile;
 }
 
