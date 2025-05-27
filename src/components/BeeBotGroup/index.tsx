@@ -32,16 +32,13 @@ function BeeBotGroup({
   useFrame(({ clock }, delta) => {
     if (!groupRef.current) return;
 
-    // 1) rotate entire group
     const dir = isGroupClockwise ? -1 : 1;
     groupRef.current.rotation.y += delta * speed * dir;
 
-    // 2) compute fluctuating radius & new vertex positions
-    const t = clock.getElapsedTime(); // seconds
+    const t = clock.getElapsedTime();
     const radius = getFluctuatingRadius(minRadius, maxRadius, period, t);
     const positions = getPentagonPositions(radius);
 
-    // 3) push those back into each BeeBot’s Object3D
     groupRef.current.children.forEach((child, i) => {
       child.position.set(...positions[i]);
     });
@@ -57,11 +54,11 @@ function BeeBotGroup({
           scale={4}
           rotationSpeed={botAxisRotationSpeed}
           fileName={[
-            'bee_bot8_blue.glb',
-            'bee_bot8_green.glb',
-            'bee_bot8_yellow.glb',
-            'bee_bot8_red.glb',
-            'bee_bot8_purple.glb'
+            'bee_bot12_blue.glb', //blue
+            'bee_bot12_green.glb', //green
+            'bee_bot12_yellow.glb', //yellow
+            'bee_bot12_red.glb', //red
+            'bee_bot12_purple.glb' //purple
           ][i]}
           isBotClockwise={isBotClockwise}
         />

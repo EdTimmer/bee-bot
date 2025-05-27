@@ -69,7 +69,7 @@ function App() {
               <PerspectiveCamera makeDefault fov={20} position={[-18, 2, 0]} />
 
               <directionalLight position={[0, 5, 5]} />
-              <directionalLight position={[0, -5, 5]} />            
+              <directionalLight position={[0, -5, 5]} /> 
 
               <BeeBotGroup
                 position={[0, -1.5, 0]}
@@ -84,6 +84,7 @@ function App() {
               />
 
               <Environment background preset="forest" backgroundIntensity={0.3} />
+              {/* <Environment preset="forest" backgroundIntensity={0.3} /> */}
               <OrbitControls enableDamping={true} />
             </Canvas>
           </MainContainer>
