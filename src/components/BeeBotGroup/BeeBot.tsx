@@ -1,5 +1,5 @@
 import { forwardRef, useRef, useEffect, useImperativeHandle } from "react";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, useAnimations } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
@@ -15,7 +15,7 @@ interface Props {
 const BeeBot = forwardRef<THREE.Group, Props>(
   (
     {
-      fileName = "bee_bot7_blue.glb",
+      fileName = "bee_bot12_blue.glb",
       scale = 1,
       position = [0, 0, 0],
       rotation = [0, 0, 0],
@@ -30,9 +30,15 @@ const BeeBot = forwardRef<THREE.Group, Props>(
     // forward groupRef to the parent ref (callback or object)
     useImperativeHandle(ref, () => groupRef.current!);
 
-    const { nodes, materials } = useGLTF(
+    const { animations, scene } = useGLTF(
       "../../models/" + fileName
     );
+
+    const { actions } = useAnimations(animations, parentGroupRef);
+
+    useEffect(() => {
+      Object.values(actions).forEach((a) => a && a.play());
+    }, [actions]);
 
     // set initial rotation
     useEffect(() => {
@@ -66,24 +72,14 @@ const BeeBot = forwardRef<THREE.Group, Props>(
     });
 
     return (
-      <group ref={parentGroupRef} position={position} rotation={[0, 0, 0]}>
-        <group ref={groupRef} position={[0, 0.3, 0]}>
-          {Object.values(nodes)
-            .filter((n) => n instanceof THREE.Mesh)
-            .map((mesh) => (
-              <mesh
-                key={mesh.uuid}
-                geometry={mesh.geometry}
-                material={
-                  materials[(mesh.material! as THREE.Material).name]
-                }
-                castShadow
-                receiveShadow
-                scale={scale}
-              />
-            ))}
-        </group>
-      </group>    
+      <group ref={parentGroupRef} position={position}>
+        <primitive
+          ref={groupRef}
+          object={scene}
+          rotation={rotation}
+          scale={scale}
+        />
+      </group>
     );
   }
 );
