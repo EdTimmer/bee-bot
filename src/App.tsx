@@ -38,7 +38,7 @@ function App() {
 
   const { groupSpeed, botSpeed, minRadius, maxRadius, period } = useControls({
     groupSpeed: { value: 0.3, min: 0, max: 1, step: 0.01, label: 'Group speed' },
-    botSpeed: { value: 0.015, min: 0, max: 0.1, step: 0.001, label: 'Bot speed' },
+    botSpeed: { value: 0.0075, min: 0, max: 0.1, step: 0.0001, label: 'Bot spin speed' },
     groupDirection: {
       value: isGroupClockwise,
       onChange: (value) => setIsGroupClockwise(value),
